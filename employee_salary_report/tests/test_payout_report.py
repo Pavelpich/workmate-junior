@@ -5,7 +5,7 @@ def test_employee_salary_calculation():
     employee = Employee(email="eva@mail.com", hours_worked=150, hourly_rate=40)
 
     # When
-    payout = employee.calculate_salary()
+    employee.calculate_salary()
 
     # Then
-    assert payout == 6000
+    assert employee.salary == 6000
