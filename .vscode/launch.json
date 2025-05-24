@@ -23,6 +23,19 @@
             "console": "integratedTerminal",
             // "python": "${config:python_path}",
             // "cwd": "${config:cwd}" not used because test.ini shared with js project
+        },
+        {
+            "name": "pytest with coverage",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "--cov=employee_salary_report",
+                "--cov-report=term-missing",
+                "employee_salary_report/tests/"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

@@ -1,6 +1,5 @@
 import pytest
-from ..models.employee import Employee
-
+from employee_salary_report.models.employee import Employee
 
 def test_employee_creation_valid():
     # Given
@@ -50,7 +49,14 @@ def test_employee_salary_calculation():
 
 def test_employee_salary_float():
     # Given
-    employee = Employee(email="ivan@mail.com", hours_worked=100, hourly_rate=36.64)
+    employee = Employee(
+        email="eva@mail.com",
+        name="Eva",
+        department="IT",
+        hours_worked=100,
+        id=0,
+        hourly_rate=36.64,
+    )
 
     # When
     salary = employee.salary
@@ -125,10 +131,30 @@ def test_employee_with_empty_name_raises_error():
 def test_employee_with_negative_hours_raises_error():
     # Given
     email = "eva@mail.com"
-    name = ""
+    name = "Eva"
     department = "IT"
-    hours_worked = 150
+    hours_worked = -10
     id = 0
+    hourly_rate = 40
+
+    # When&Then
+    with pytest.raises(ValueError):
+        Employee(
+            email=email,
+            name=name,
+            department=department,
+            hours_worked=hours_worked,
+            id=id,
+            hourly_rate=hourly_rate,
+        )
+
+def test_employee_with_negative_id_raises_error():
+    # Given
+    email = "eva@mail.com"
+    name = "Eva"
+    department = "IT"
+    hours_worked = 10
+    id = -1
     hourly_rate = 40
 
     # When&Then
