@@ -1,13 +1,21 @@
 class Employee:
-    email:str
-    name:str
-    department:str
-    hours_worked:int
-    id:int
-    hourly_rate:int
-    salary:int
+    email: str
+    name: str
+    department: str
+    hours_worked: int
+    id: int
+    hourly_rate: int
+    salary: int
 
-    def __init__(self, email:str, name:str, department:str, hours_worked:int, id:int, hourly_rate:int):
+    def __init__(
+        self,
+        email: str,
+        name: str,
+        department: str,
+        hours_worked: int,
+        id: int,
+        hourly_rate: int,
+    ):
 
         if not name.strip():
             raise ValueError("Имя не может быть пустым")

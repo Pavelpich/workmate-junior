@@ -1,15 +1,37 @@
 import pytest
-from employee_salary_report.output.console_output import  ConsoleOutput
+from employee_salary_report.output.console_output import ConsoleOutput
 from employee_salary_report.reports.payout_report import PayoutReport
 from employee_salary_report.output.json_output import JsonOutput
 from employee_salary_report.models.employee import Employee
 
+
 def test_console_output_renders_correctly():
     # Given
     employees = [
-        Employee(id=1, email="alice@example.com", name="Alice", department="Marketing", hours_worked=160, hourly_rate=50),
-        Employee(id=2, email="bob@example.com", name="Bob", department="Design", hours_worked=150, hourly_rate=40),
-        Employee(id=3, email="carol@example.com", name="Carol", department="Marketing", hours_worked=170, hourly_rate=50),
+        Employee(
+            id=1,
+            email="alice@example.com",
+            name="Alice",
+            department="Marketing",
+            hours_worked=160,
+            hourly_rate=50,
+        ),
+        Employee(
+            id=2,
+            email="bob@example.com",
+            name="Bob",
+            department="Design",
+            hours_worked=150,
+            hourly_rate=40,
+        ),
+        Employee(
+            id=3,
+            email="carol@example.com",
+            name="Carol",
+            department="Marketing",
+            hours_worked=170,
+            hourly_rate=50,
+        ),
     ]
     report = PayoutReport()
     data = report.generate(employees)
@@ -36,6 +58,7 @@ Total               150.00                       6000.00
 """
     assert result == expected
 
+
 def test_console_output_with_empty_data():
     # Given
     employees = []
@@ -50,13 +73,35 @@ def test_console_output_with_empty_data():
     expected = "Payout Report\n"
     assert result == expected
 
+
 # Tests for JsonOutput
 def test_json_output_renders_correctly():
     # Given
     employees = [
-        Employee(id=1, email="alice@example.com", name="Alice", department="Marketing", hours_worked=160, hourly_rate=50),
-        Employee(id=2, email="bob@example.com", name="Bob", department="Design", hours_worked=150, hourly_rate=40),
-        Employee(id=3, email="carol@example.com", name="Carol", department="Marketing", hours_worked=170, hourly_rate=50),
+        Employee(
+            id=1,
+            email="alice@example.com",
+            name="Alice",
+            department="Marketing",
+            hours_worked=160,
+            hourly_rate=50,
+        ),
+        Employee(
+            id=2,
+            email="bob@example.com",
+            name="Bob",
+            department="Design",
+            hours_worked=150,
+            hourly_rate=40,
+        ),
+        Employee(
+            id=3,
+            email="carol@example.com",
+            name="Carol",
+            department="Marketing",
+            hours_worked=170,
+            hourly_rate=50,
+        ),
     ]
     report = PayoutReport()
     data = report.generate(employees)
@@ -66,7 +111,7 @@ def test_json_output_renders_correctly():
     result = json_output.render(data)
 
     # Then
-    expected = '''{
+    expected = """{
   "Marketing": {
     "employees": [
       {
@@ -97,8 +142,9 @@ def test_json_output_renders_correctly():
     "total_hours": 150,
     "total_salary": 6000
   }
-}'''
+}"""
     assert result.strip() == expected.strip()
+
 
 def test_json_output_with_empty_data():
     # Given

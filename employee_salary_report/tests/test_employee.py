@@ -1,6 +1,7 @@
 import pytest
 from employee_salary_report.models.employee import Employee
 
+
 def test_employee_creation_valid():
     # Given
     email = "eva@mail.com"
@@ -147,6 +148,7 @@ def test_employee_with_negative_hours_raises_error():
             id=id,
             hourly_rate=hourly_rate,
         )
+
 
 def test_employee_with_negative_id_raises_error():
     # Given
