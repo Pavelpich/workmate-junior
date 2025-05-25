@@ -1,5 +1,5 @@
 import json
-from output.base_output import OutputFormatter
+from .base_output import OutputFormatter
 
 class JsonOutput(OutputFormatter):
     def render(self, data: dict) -> str:

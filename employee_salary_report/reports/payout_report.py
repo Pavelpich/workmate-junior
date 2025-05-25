@@ -14,7 +14,7 @@ class PayoutReport(BaseReport):
                 "name": emp.name,
                 "hours": emp.hours_worked,
                 "salary": emp.salary,
-                "rate": emp.hourly_rate
+                "hourly_rate": emp.hourly_rate
             }
             report[department]["employees"].append(employee_data)
             report[department]["total_hours"] += emp.hours_worked
