@@ -1,6 +1,5 @@
 import argparse
 import sys
-import os
 from typing import List
 from parsers.csv_parser import CSVParser
 from employee_salary_report.output.console_output import  ConsoleOutput
@@ -13,19 +12,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "files",
         nargs="+",
-        help="List of CSV files to process"
+        help="List of CSV files you to process"
     )
     parser.add_argument(
         "--report",
         choices=["payout"],
         default="payout",
-        help="Type of report to generate (default: payout)"
+        help="type of report to generate (default: payout)"
     )
     parser.add_argument(
         "--output",
         choices=["console", "json"],
         default="console",
-        help="Output format (default: console)"
+        help="output format (default: console)"
     )
     return parser.parse_args()
 
