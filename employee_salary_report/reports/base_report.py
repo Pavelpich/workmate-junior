@@ -6,4 +6,4 @@ class BaseReport(ABC):
     """Abstract class that is inherited to create actual reports"""
     @abstractmethod
     def generate(self, employees: List[Employee]) -> dict:
-        pass
+        raise NotImplementedError
